@@ -77,3 +77,19 @@ input[type=text], select {
 	font-size: 10pt;
 	line-height: 1;
 }
+
+.go {
+	height: 8mm;
+	width: 30mm;
+	margin: 8pt auto;
+	border-radius: 2px;
+	padding: 1mm 0;
+	background-color: #333;
+	text-align: center;
+	border: 1pt solid #444;
+	color: #777;
+}
+
+.go:hover {
+	background-color: #444;
+}

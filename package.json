@@ -1,11 +1,15 @@
 {
-	"name": "Phorg",
-	"version": "0.1.0",
-	"description": "",
-	"main": "app.js",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/stevenlaidlaw/Phorg"
-	}
+  "name": "Phorg",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevenlaidlaw/Phorg"
+  },
+  "dependencies": {
+    "exif": "^0.6.0",
+    "fs-extra": "^0.28.0"
+  }
 }
