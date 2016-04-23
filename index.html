@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Phorg - Image Organisation</title>
+	<link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+</head>
+
+<body>
+
+<table class="block">
+	<tbody>
+		<tr>
+			<td class="label">Source</td>
+			<td><div class="textbox" id="srcText"><em style="color:#777">Please select a source directory</em></div></td>
+			<td>
+				<div class="button" id="srcButton" onclick="openFile('src')">. . .</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Destination</td>
+			<td><div class="textbox" id="destText"><em style="color:#777">Please select a destination directory</em></div></td>
+			<td>
+				<div class="button" id="destButton" onclick="openFile('dest')">. . .</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Format</td>
+			<td><input id="patternBox" type="text" name="pattern" placeholder="Please set the file pattern"/></td>
+			<td>
+				<div class="button" id="help" onclick="showHelp()">?</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>

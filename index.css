@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Raleway';
+	background-color: #222;
+	color: #777;
+	font-size: 10pt;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.block {
+	width: 100%;
+	position: relative;
+	clear: both;
+}
+
+.block td {
+	padding: 4pt;
+}
+
+.block .label {
+	width: 23mm;
+}
+
+.block .textbox {
+	border: 1pt solid #333;
+	min-height: 8mm;
+	padding: 4pt;
+	color: #AAA;
+	border-radius: 2px;
+}
+
+input[type=text], select {
+	width: 100%;
+	padding: 4pt;
+	min-height: 8mm;
+	border: 1px solid #444;
+	background-color: #333;
+	color: #AAA;
+	border-radius: 2px;
+	box-sizing: border-box;
+}
+
+.block td:last-child {
+	width: 10mm;
+}
+
+.block .button {
+	background-color: #333;
+	border: 1pt solid #444;
+	width: 8mm;
+	height: 8mm;
+	border-radius: 2px;
+	text-align: center;
+	line-height: 2.5;
+}
+
+.block .button:hover {
+	background-color: #444;
+}
+
+::-webkit-input-placeholder {
+	color: #777;
+	font-style: italic;
+}
