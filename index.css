@@ -59,7 +59,11 @@ input[type=text], select {
 	height: 8mm;
 	border-radius: 2px;
 	text-align: center;
-	line-height: 2.5;
+	padding: 1mm;
+}
+
+.block .button > img {
+	width: 100%;
 }
 
 .block .button:hover {
@@ -67,6 +71,9 @@ input[type=text], select {
 }
 
 ::-webkit-input-placeholder {
-	color: #777;
+	font-family: 'Raleway';
+	color: #555;
 	font-style: italic;
+	font-size: 10pt;
+	line-height: 1;
 }
