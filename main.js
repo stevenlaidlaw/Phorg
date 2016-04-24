@@ -1,12 +1,26 @@
+/*
+* TODO
+* Allow / characters in pattern to create directories
+* Prevent from running using special characters, ie : / \
+* */
+
+
 var fs = require('fs-extra');
 var path = require('path');
 var remote = require('remote');
 var dialog = remote.require('dialog');
 var exif = require('exif').ExifImage;
-var debug = true; // TODO Set to false
+var debug = false;
 
-var srcDir = '/Users/stevenlaidlaw/Downloads/unsorted/'; // TODO Revert these to blank
-var destDir = '/Users/stevenlaidlaw/Downloads/sorted/'; // TODO Revert these to blank
+var helpBox = document.getElementById('helpBox');
+helpBox.style.display = 'none';
+var patternBox = document.getElementById('patternBox');
+var patternDemo = document.getElementById('patternDemo');
+var patternString = '';
+var exampleDate = new Date();
+
+var srcDir = '';
+var destDir = '';
 
 if (debug) {
 	remote.getCurrentWindow().toggleDevTools();
@@ -59,14 +73,12 @@ function renameFiles() {
 							var dateString = exifData.exif.CreateDate;
 							dateString = dateString.replace(':', '-');
 							dateString = dateString.replace(':', '-');
-							dateString = dateString.replace(' ','_');
-							dateString = dateString.replace(':', 'h');
-							dateString = dateString.replace(':', 'm');
+							dateString = dateString.replace(' ','T');
 
-							//var date = new Date(dateString);
+							var date = new Date(dateString);
 
 							// This is where we will order by pattern. For now let's just get the copying file thing working
-							var newFile = dateString;
+							var newFile = convertDateString(date, patternString);
 
 							newFile += path.extname(file).toLowerCase();
 
@@ -90,5 +102,33 @@ function renameFiles() {
 }
 
 function showHelp() {
-	alert('This is where the help with patterns will go');
+	if (helpBox.style.display === 'none') {
+		helpBox.style.display = 'block';
+	} else {
+		helpBox.style.display = 'none';
+	}
+}
+
+patternBox.addEventListener('input', function (e) {
+	patternString = e.target.value;
+	patternDemo.innerText = convertDateString(exampleDate, e.target.value);
+}, false);
+
+function addZero (num) {
+	if (num < 10) {
+		num = '0' + num;
+	}
+	return num;
+}
+
+function convertDateString(date, text) {
+	text = text.replace('$Y', date.getFullYear());
+	text = text.replace('$y', date.getYear());
+	text = text.replace('$M', addZero(date.getMonth() + 1));
+	text = text.replace('$D', addZero(date.getDate()));
+	text = text.replace('$H', addZero(date.getHours()));
+	text = text.replace('$m', addZero(date.getMinutes()));
+	text = text.replace('$S', addZero(date.getSeconds()));
+
+	return text;
 }

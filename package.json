@@ -1,7 +1,7 @@
 {
   "name": "Phorg",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.2.0",
+  "description": "Cross-platform app to bulk rename photos based on the date they were created in the EXIF data.",
   "main": "app.js",
   "license": "MIT",
   "repository": {
