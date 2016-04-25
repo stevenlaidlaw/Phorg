@@ -5,7 +5,7 @@
 }
 
 body {
-	font-family: 'Raleway';
+	font-family: 'Raleway', sans-serif;
 	background-color: #222;
 	color: #777;
 	font-size: 10pt;
@@ -13,6 +13,32 @@ body {
 
 table {
 	border-collapse: collapse;
+}
+
+#header {
+	position: relative;
+	margin-bottom: 8pt;
+}
+
+#header > #logo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 64px;
+}
+
+#header > #title {
+	font-size: 300%;
+}
+
+#header > #subtitle {
+	margin: 4pt 0;
+}
+
+#header > #info {
+	color: #555;
+	font-size: 80%;
+	font-style: italic;
 }
 
 .block {
@@ -103,15 +129,39 @@ input[type=text], select {
 	background-color: #444;
 }
 
-#helpRow > td {
-	padding: 0 4pt;
-}
-
 #helpBox {
 	display: none;
 	font-size: 80%;
 	text-align: center;
-	background-color: rgba(255,255,255,0.1);
+	background-color: #333;
+	border-radius: 8pt;
 	color: #777;
-	padding: 4pt 0;
+	padding: 4pt;
+	position: absolute;
+	right: 50px;
+	width: 400px;
+	top: 75px;
+}
+
+#helpBox > #rules {
+	width: 100%;
+	text-align: center;
+}
+
+#helpBox > #rules th {
+	font-size: 150%;
+	padding-bottom: 4pt;
+}
+
+#helpBox > #rules td:nth-child(2n+1) {
+	color: white;
+}
+
+#helpBox > #folderInfo {
+	margin: 4pt 0;
+}
+
+#helpBox > #notAllowed {
+	width: 100%;
+	text-align: center;
 }

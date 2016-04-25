@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Phorg - Image Organisation</title>
+	<title>Phorg - A photo organisation app</title>
 	<link rel="stylesheet" type="text/css" href="index.css" media="screen" />
 </head>
 
 <body>
+
+<div id="header">
+	<img id="logo" src="images/icon.svg"/>
+	<div id="title">Phorg</div>
+	<div id="subtitle">A photo organisation app</div>
+	<div id="info">Organises JPEG photos based on the date they were taken. Non-destructive, and creates directories as they are needed.</div>
+</div>
 
 <table class="block">
 	<tbody>
@@ -44,13 +51,6 @@
 				</div>
 			</td>
 		</tr>
-		<tr id="helpRow">
-			<td></td>
-			<td>
-				<div id="helpBox">$Y - Full Year (2010) <span>&#149;</span> $y - Year (10) <span>&#149;</span> $M - Month <span>&#149;</span> $D - Day <span>&#149;</span> $H - Hours <span>&#149;</span> $m - Minutes <span>&#149;</span> $S - Seconds</div>
-			</td>
-			<td></td>
-		</tr>
 		<tr>
 			<td class="label">Demo</td>
 			<td><div id="patternDemo"></div></td>
@@ -58,6 +58,36 @@
 		</tr>
 	</tbody>
 </table>
+
+<div id="helpBox">
+	<table id="rules">
+		<thead>
+		<tr>
+			<th colspan="14">Rules</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>$Y</td>
+			<td>Full Year</td>
+			<td>$y</td>
+			<td>Year</td>
+			<td>$M</td>
+			<td>Month</td>
+			<td>$D</td>
+			<td>Day</td>
+			<td>$H</td>
+			<td>Hours</td>
+			<td>$m</td>
+			<td>$Minutes</td>
+			<td>$S</td>
+			<td>Seconds</td>
+		</tr>
+		</tbody>
+	</table>
+	<div id="folderInfo">Use / to create subfolders. For example, given the datetime '2015-05-16 16:46:22', the pattern '$Y/$M/' will create subfolders named '2015/05/'</div>
+	<div id="notAllowed">The following characters are not allowed in file names and will be replaced with underscores &lt;, &gt;, :, ", \, |, ?, *</div>
+</div>
 
 <div class="go" onclick="renameFiles()">Go!</div>
 

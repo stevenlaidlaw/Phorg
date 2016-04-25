@@ -1,16 +1,8 @@
-/*
-* TODO
-* Allow / characters in pattern to create directories
-* Prevent from running using special characters, ie : / \
-* */
-
-
 var fs = require('fs-extra');
 var path = require('path');
 var remote = require('remote');
 var dialog = remote.require('dialog');
 var exif = require('exif').ExifImage;
-var debug = false;
 
 var helpBox = document.getElementById('helpBox');
 helpBox.style.display = 'none';
@@ -21,10 +13,6 @@ var exampleDate = new Date();
 
 var srcDir = '';
 var destDir = '';
-
-if (debug) {
-	remote.getCurrentWindow().toggleDevTools();
-}
 
 function openFile(name) {
 	dialog.showOpenDialog({properties:['openDirectory']}, function (filenames) {
@@ -37,10 +25,10 @@ function openFile(name) {
 
 		if (name === 'src') {
 			textbox = document.getElementById('srcText');
-			srcDir = filename;
+			srcDir = filename + '/';
 		} else {
 			textbox = document.getElementById('destText');
-			destDir = filename;
+			destDir = filename + '/';
 		}
 
 		textbox.innerHTML = filename;
@@ -65,14 +53,14 @@ function renameFiles() {
 	fs.readdir(srcDir, function (err, fileList) {
 		fileList.forEach(function(file) {
 			try {
-				new exif({ image : srcDir + file }, function (error, exifData) {
-					if (error) {
-						console.log("Error in exif data: '" + file + "' - " + error.message);
+				new exif({ image : srcDir + '/' + file }, function (err, exifData) {
+					if (err) {
+						console.log("Error in exif data: '" + file + "' - " + err.message);
 					} else {
 						if (exifData.exif.CreateDate.length > 0) {
 							var dateString = exifData.exif.CreateDate;
-							dateString = dateString.replace(':', '-');
-							dateString = dateString.replace(':', '-');
+							dateString = dateString.replace(':','-');
+							dateString = dateString.replace(':','-');
 							dateString = dateString.replace(' ','T');
 
 							var date = new Date(dateString);
@@ -82,12 +70,20 @@ function renameFiles() {
 
 							newFile += path.extname(file).toLowerCase();
 
-							fs.copy(srcDir + file, destDir + newFile, function (err) {
+							var newDirectory = newFile.substr(0, newFile.lastIndexOf('/'));
+
+							fs.mkdirs(newDirectory , function(err) {
 								if (err) {
-									return console.error("Error unable to copy: '" + file + "' - " + err)
+									return console.error("Error unable to create directory: '" + newDirectory + "' - " + err)
 								}
 
-								console.log("Copied '" + file + "' to '" + newFile + "'");
+								fs.copy(srcDir + '/' + file, destDir + '/' + newFile, function (err) {
+									if (err) {
+										return console.error("Error unable to copy: '" + file + "' - " + err)
+									}
+
+									console.log("Copied '" + file + "' to '" + newFile + "'");
+								});
 							});
 						} else {
 							console.log("Error: No creation date listed in file '" + file + "'");
@@ -122,13 +118,39 @@ function addZero (num) {
 }
 
 function convertDateString(date, text) {
-	text = text.replace('$Y', date.getFullYear());
-	text = text.replace('$y', date.getYear());
-	text = text.replace('$M', addZero(date.getMonth() + 1));
-	text = text.replace('$D', addZero(date.getDate()));
-	text = text.replace('$H', addZero(date.getHours()));
-	text = text.replace('$m', addZero(date.getMinutes()));
-	text = text.replace('$S', addZero(date.getSeconds()));
+	while (text.includes('$Y')) {
+		text = text.replace('$Y', date.getFullYear());
+	}
+	while (text.includes('$y'))
+		text = text.replace('$y', date.getYear());
+	while (text.includes('$M'))
+		text = text.replace('$M', addZero(date.getMonth() + 1));
+	while (text.includes('$D'))
+		text = text.replace('$D', addZero(date.getDate()));
+	while (text.includes('$H'))
+		text = text.replace('$H', addZero(date.getHours()));
+	while (text.includes('$m'))
+		text = text.replace('$m', addZero(date.getMinutes()));
+	while (text.includes('$S'))
+		text = text.replace('$S', addZero(date.getSeconds()));
+
+	// Remove all forbidden characters in linux/windows except '/' as they should be handled already
+	while (text.includes('<'))
+		text = text.replace('<','_');
+	while (text.includes('>'))
+		text = text.replace('>','_');
+	while (text.includes(':'))
+		text = text.replace(':','_');
+	while (text.includes('"'))
+		text = text.replace('"','_');
+	while (text.includes('\\'))
+		text = text.replace('\\','_');
+	while (text.includes('|'))
+		text = text.replace('|','_');
+	while (text.includes('?'))
+		text = text.replace('?','_');
+	while (text.includes('*'))
+		text = text.replace('*','_');
 
 	return text;
 }
