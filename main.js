@@ -72,18 +72,12 @@ function renameFiles() {
 
 							var newDirectory = newFile.substr(0, newFile.lastIndexOf('/'));
 
-							fs.mkdirs(newDirectory , function(err) {
+							fs.copy(srcDir + '/' + file, destDir + '/' + newFile, function (err) {
 								if (err) {
-									return console.error("Error unable to create directory: '" + newDirectory + "' - " + err)
+									return console.error("Error unable to copy: '" + file + "' - " + err)
 								}
 
-								fs.copy(srcDir + '/' + file, destDir + '/' + newFile, function (err) {
-									if (err) {
-										return console.error("Error unable to copy: '" + file + "' - " + err)
-									}
-
-									console.log("Copied '" + file + "' to '" + newFile + "'");
-								});
+								console.log("Copied '" + file + "' to '" + newFile + "'");
 							});
 						} else {
 							console.log("Error: No creation date listed in file '" + file + "'");
