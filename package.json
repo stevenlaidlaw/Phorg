@@ -1,4 +1,5 @@
 {
+  "productName": "Phorg",
   "name": "Phorg",
   "version": "1.0.0",
   "description": "Cross-platform app to bulk rename photos based on the date they were created in the EXIF data.",
@@ -11,5 +12,8 @@
   "dependencies": {
     "exif": "^0.6.0",
     "fs-extra": "^0.28.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^7.0.1"
   }
 }
