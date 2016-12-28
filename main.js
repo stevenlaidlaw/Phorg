@@ -5,7 +5,10 @@ var dialog = remote.require('dialog');
 var exif = require('exif').ExifImage;
 
 var helpBox = document.getElementById('helpBox');
-helpBox.style.display = 'none';
+var helpButton = document.getElementById('help');
+
+console.log('Helpbutton: ', helpButton);
+
 var patternBox = document.getElementById('patternBox');
 var patternDemo = document.getElementById('patternDemo');
 var patternString = '';
@@ -13,6 +16,8 @@ var exampleDate = new Date();
 
 var srcDir = '';
 var destDir = '';
+var srcBox = document.getElementById('srcText');
+var destBox = document.getElementById('destText');
 
 function openFile(name) {
 	dialog.showOpenDialog({properties:['openDirectory']}, function (filenames) {
@@ -21,13 +26,11 @@ function openFile(name) {
 		}
 		var filename = filenames[0];
 
-		var textbox;
-
 		if (name === 'src') {
-			textbox = document.getElementById('srcText');
+			srcBox.innerHTML = filename;
 			srcDir = filename + '/';
 		} else {
-			textbox = document.getElementById('destText');
+			destBox.innerHTML = filename;
 			destDir = filename + '/';
 		}
 
@@ -91,13 +94,14 @@ function renameFiles() {
 	});
 }
 
-function showHelp() {
+helpButton.onclick = function() {
+	console.log('Works');
 	if (helpBox.style.display === 'none') {
 		helpBox.style.display = 'block';
 	} else {
 		helpBox.style.display = 'none';
 	}
-}
+};
 
 patternBox.addEventListener('input', function (e) {
 	patternString = e.target.value;

@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Phorg - A photo organisation app</title>
-	<link rel="stylesheet" type="text/css" href="index.css" media="screen" />
-</head>
-
-<body>
-
-<div id="header">
-	<img id="logo" src="images/icon.svg"/>
-	<div id="title">Phorg</div>
-	<div id="subtitle">A photo organisation app</div>
-	<div id="info">Organises JPEG photos based on the date they were taken. Non-destructive, and creates directories as they are needed.</div>
-</div>
-
-<table class="block">
-	<tbody>
-		<tr>
-			<td class="label">Source</td>
-			<td>
-				<div class="textbox" id="srcText">
-					<em style="color:#555">Please select a source directory</em>
-				</div>
-			</td>
-			<td>
-				<div class="button" id="srcButton" onclick="openFile('src')">
-					<img src="images/folder.svg"/>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="label">Destination</td>
-			<td>
-				<div class="textbox" id="destText">
-					<em style="color:#555">Please select a destination directory</em>
-				</div>
-			</td>
-			<td>
-				<div class="button" id="destButton" onclick="openFile('dest')">
-					<img src="images/folder.svg"/>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="label">Format</td>
-			<td><input id="patternBox" type="text" name="pattern" placeholder="Please set the file pattern"/></td>
-			<td>
-				<div class="button" id="help" onclick="showHelp()">
-					<img src="images/info.svg"/>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="label">Demo</td>
-			<td><div id="patternDemo"></div></td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
-
-<div id="helpBox">
-	<table id="rules">
-		<thead>
-		<tr>
-			<th colspan="14">Rules</th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr>
-			<td>$Y</td>
-			<td>Full Year</td>
-			<td>$y</td>
-			<td>Year</td>
-			<td>$M</td>
-			<td>Month</td>
-			<td>$D</td>
-			<td>Day</td>
-			<td>$H</td>
-			<td>Hours</td>
-			<td>$m</td>
-			<td>$Minutes</td>
-			<td>$S</td>
-			<td>Seconds</td>
-		</tr>
-		</tbody>
-	</table>
-	<div id="folderInfo">Use / to create subfolders. For example, given the datetime '2015-05-16 16:46:22', the pattern '$Y/$M/' will create subfolders named '2015/05/'</div>
-	<div id="notAllowed">The following characters are not allowed in file names and will be replaced with underscores &lt;, &gt;, :, ", \, |, ?, *</div>
-</div>
-
-<div class="go" onclick="renameFiles()">Go!</div>
-
-<script type="text/javascript" src="main.js"></script>
-
-</body>
+	<head>
+		<title>Phorg - A photo organisation app</title>
+		<link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+	</head>
+	
+	<body>
+	
+		<div id="header">
+			<img id="logo" src="images/icon.svg"/>
+			<div id="title">Phorg</div>
+			<div id="subtitle">A photo organisation app</div>
+			<div id="info">Organises JPEG photos based on the date they were taken. Non-destructive, and creates directories as they are needed.</div>
+		</div>
+		
+		<table class="block">
+			<tbody>
+				<tr>
+					<td class="label">Source</td>
+					<td>
+						<div class="textbox" id="srcText">
+							<em style="color:#555">Please select a source directory</em>
+						</div>
+					</td>
+					<td>
+						<div class="button" id="srcButton" onclick="openFile('src')">
+							<img src="images/folder.svg"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="label">Destination</td>
+					<td>
+						<div class="textbox" id="destText">
+							<em style="color:#555">Please select a destination directory</em>
+						</div>
+					</td>
+					<td>
+						<div class="button" id="destButton" onclick="openFile('dest')">
+							<img src="images/folder.svg"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="label">Format</td>
+					<td><input id="patternBox" type="text" name="pattern" placeholder="Please set the file pattern"/></td>
+					<td>
+						<div class="button" id="help">
+							<img src="images/info.svg"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="label">Demo</td>
+					<td><div id="patternDemo"></div></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div id="helpBox">
+			<table id="rules">
+				<thead>
+				<tr>
+					<th colspan="14">Rules</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>$Y</td>
+					<td>Full Year</td>
+					<td>$y</td>
+					<td>Year</td>
+					<td>$M</td>
+					<td>Month</td>
+					<td>$D</td>
+					<td>Day</td>
+					<td>$H</td>
+					<td>Hours</td>
+					<td>$m</td>
+					<td>$Minutes</td>
+					<td>$S</td>
+					<td>Seconds</td>
+				</tr>
+				</tbody>
+			</table>
+			<div id="folderInfo">Use / to create subfolders. For example, given the datetime '2015-05-16 16:46:22', the pattern '$Y/$M/' will create subfolders named '2015/05/'</div>
+			<div id="notAllowed">The following characters are not allowed in file names and will be replaced with underscores &lt;, &gt;, :, ", \, |, ?, *</div>
+		</div>
+		
+		<div class="go" onclick="renameFiles()">Go!</div>
+		
+		<script type="text/javascript" src="main.js"></script>
+	
+	</body>
 </html>
