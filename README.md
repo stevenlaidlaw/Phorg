@@ -13,6 +13,14 @@ Phorg is a cross platform app that organises JPEG photos based on the date they 
 * Use / to create subfolders. For example, given the datetime '2015-05-16 16:46:22', the pattern '$Y/$M/' will create subfolders named '2015/05/'
 * The following characters are not allowed in file names and will be replaced with underscores &lt;, &gt;, :, ", \, |, ?, *
 
+## Distribution
+
+```
+./node_modules/.bin/electron-packager . Phorg --platform=darwin --arch=x64
+```
+
 ---
 
-Binaries to come when the app is complete!
+## Binaries
+
+OSX binaries available in `Phorg-darwin-x64/` directory
