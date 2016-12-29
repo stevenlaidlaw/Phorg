@@ -1,17 +1,16 @@
-var fs = require('fs-extra');
-var path = require('path');
-var remote = require('remote');
-var dialog = remote.require('dialog');
-var exif = require('exif').ExifImage;
+const fs = require('fs-extra');
+const path = require('path');
+const { dialog } = require('electron').remote;
+const exif = require('exif').ExifImage;
 
 var helpBox = document.getElementById('helpBox');
+helpBox.style.display = 'none';
 var helpButton = document.getElementById('help');
-
-console.log('Helpbutton: ', helpButton);
 
 var patternBox = document.getElementById('patternBox');
 var patternDemo = document.getElementById('patternDemo');
 var patternString = '';
+
 var exampleDate = new Date();
 
 var srcDir = '';
@@ -95,7 +94,6 @@ function renameFiles() {
 }
 
 helpButton.onclick = function() {
-	console.log('Works');
 	if (helpBox.style.display === 'none') {
 		helpBox.style.display = 'block';
 	} else {
