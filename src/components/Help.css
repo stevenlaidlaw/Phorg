@@ -1,0 +1,40 @@
+.Help {
+	display: none;
+	text-align: center;
+	background-color: #333;
+	border-radius: 8pt;
+	color: #777;
+	padding: 4pt;
+	position: absolute;
+	right: 100px;
+	width: 500px;
+	top: 75px;
+	line-height: 1.4;
+}
+
+.Help.shown {
+	display: block;
+}
+
+.Help > .rules {
+	width: 100%;
+	text-align: center;
+}
+
+.Help > .rules th {
+	font-size: 150%;
+	padding-bottom: 4pt;
+}
+
+.Help > .rules td:nth-child(2n+1) {
+	color: white;
+}
+
+.Help > .folderInfo {
+	margin: 4pt 0;
+}
+
+.Help > .notAllowed {
+	width: 100%;
+	text-align: center;
+}

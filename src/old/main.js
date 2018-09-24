@@ -131,22 +131,5 @@ function convertDateString(date, text) {
 		text = text.replace('$S', addZero(date.getSeconds()));
 
 	// Remove all forbidden characters in linux/windows except '/' as they should be handled already
-	while (text.includes('<'))
-		text = text.replace('<','_');
-	while (text.includes('>'))
-		text = text.replace('>','_');
-	while (text.includes(':'))
-		text = text.replace(':','_');
-	while (text.includes('"'))
-		text = text.replace('"','_');
-	while (text.includes('\\'))
-		text = text.replace('\\','_');
-	while (text.includes('|'))
-		text = text.replace('|','_');
-	while (text.includes('?'))
-		text = text.replace('?','_');
-	while (text.includes('*'))
-		text = text.replace('*','_');
-
-	return text;
+	return text.replace(/[<>:"\\\|\?\*]/g, '_');
 }

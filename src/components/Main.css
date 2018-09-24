@@ -1,0 +1,53 @@
+.Main {
+	width: 100%;
+	position: relative;
+	clear: both;
+}
+
+.Main td {
+	padding: 4pt;
+}
+
+.Main .label {
+	width: 23mm;
+}
+
+.Main .textbox {
+	border: 1pt solid #333;
+	min-height: 8mm;
+	padding: 4pt;
+	color: #AAA;
+	border-radius: 2px;
+	cursor: text;
+}
+
+.Main td:last-child {
+	width: 10mm;
+}
+
+.Main .button {
+	background-color: #333;
+	border: 1pt solid #444;
+	width: 8mm;
+	height: 8mm;
+	border-radius: 2px;
+	text-align: center;
+	padding: 1mm;
+}
+
+.Main .button > img {
+	width: 100%;
+}
+
+.Main .button:hover {
+	background-color: #444;
+}
+
+.Main .patternDemo {
+	border: 1pt solid #333;
+	min-height: 8mm;
+	padding: 4pt;
+	color: #777;
+	border-radius: 2px;
+	font-style: italic;
+}
