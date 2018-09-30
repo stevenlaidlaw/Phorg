@@ -14,6 +14,8 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
 		width: 700,
 		height: 340,
+		maxWidth: 700,
+		maxHeight: 340,
 		minWidth: 700,
 		minHeight: 340,
 		icon: __dirname + '/images/icon.ico'
@@ -25,8 +27,10 @@ const createWindow = () => {
 		slashes: true
 	}))
 
-	// Open the DevTools.
-	mainWindow.webContents.openDevTools()
+	if (process.env.NODE_ENV === 'development') {
+		// Open the DevTools.
+		mainWindow.webContents.openDevTools()
+	}
 
 	mainWindow.on('closed', function () {
 		// Dereference the window object

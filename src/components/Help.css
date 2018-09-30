@@ -1,33 +1,50 @@
+.box {
+	position: absolute;
+	top: -100vh;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.5s ease 0s;
+}
+
+.box.shown {
+	top: 0;
+}
+
 .Help {
-	display: none;
 	text-align: center;
 	background-color: #333;
-	border-radius: 8pt;
+	border-radius: 4pt;
 	color: #777;
-	padding: 4pt;
-	position: absolute;
-	right: 100px;
-	width: 500px;
-	top: 75px;
+	padding: 16pt;
+	width: 573px;
 	line-height: 1.4;
 }
 
-.Help.shown {
-	display: block;
-}
-
-.Help > .rules {
+.Help > .key {
 	width: 100%;
 	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.Help > .rules th {
-	font-size: 150%;
-	padding-bottom: 4pt;
+.Help > h3 {
+	margin-top: 0;
 }
 
-.Help > .rules td:nth-child(2n+1) {
+.Help > .key > div:nth-child(2n + 1) {
 	color: white;
+	padding-left: 12px;
+	padding-right: 4px;
+}
+
+.Help > .key > div:first-child {
+	padding-left: none !important;
 }
 
 .Help > .folderInfo {

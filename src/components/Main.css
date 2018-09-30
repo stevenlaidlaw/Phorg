@@ -1,31 +1,38 @@
 .Main {
-	width: 100%;
-	position: relative;
-	clear: both;
 }
 
-.Main td {
-	padding: 4pt;
+.Main > .row {
+	display: flex;
+	padding-top: 2mm;
+	align-items: center;
+	justify-content: center;
 }
 
-.Main .label {
-	width: 23mm;
+.Main > .row > .label {
+	width: 12%;
 }
 
-.Main .textbox {
+.Main > .row > input {
+	flex: 1;
 	border: 1pt solid #333;
 	min-height: 8mm;
 	padding: 4pt;
 	color: #AAA;
 	border-radius: 2px;
+	cursor: default;
+	background: transparent;
+}
+
+.Main > .row > input:focus {
+	outline: none;
+	border-color: #666;
+}
+
+.Main > .row > input.editable {
 	cursor: text;
 }
 
-.Main td:last-child {
-	width: 10mm;
-}
-
-.Main .button {
+.Main > .row > .button {
 	background-color: #333;
 	border: 1pt solid #444;
 	width: 8mm;
@@ -33,21 +40,33 @@
 	border-radius: 2px;
 	text-align: center;
 	padding: 1mm;
+	margin-left: 2mm;
 }
 
-.Main .button > img {
-	width: 100%;
-}
-
-.Main .button:hover {
+.Main > .row > .button:hover {
 	background-color: #444;
 }
 
-.Main .patternDemo {
+.Main > .row > .button > img {
+	width: 100%;
+}
+
+.Main > .row > button {
 	border: 1pt solid #333;
 	min-height: 8mm;
 	padding: 4pt;
-	color: #777;
+	color: #AAA;
 	border-radius: 2px;
-	font-style: italic;
+	background: transparent;
+	width: 10%;
+	cursor: pointer;
+	font-size: 1em;
+}
+
+.Main > .row > button:hover {
+	background: #333;
+}
+
+.Main > .row > button:focus {
+	outline: none;
 }

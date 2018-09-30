@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import styles from './App.css';
+import fs from 'fs-extra';
+import path from 'path';
+import {ExifImage} from 'exif';
+import {remote} from 'electron';
 
 import Header from './Header';
 import Help from './Help';
@@ -28,7 +32,7 @@ class App extends Component {
       <div className={styles.App}>
         <Header/>
         <Main toggleHelp={this.toggleHelp}/>
-        <Help display={displayHelp}/>
+        <Help display={displayHelp} toggleDisplay={this.toggleHelp}/>
       </div>
     )
   }

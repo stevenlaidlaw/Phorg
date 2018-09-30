@@ -1,51 +1,37 @@
 import React from 'react';
 import styles from './Main.css'
 
-const Main = ({toggleHelp}) => (
-  <table className={styles.Main}>
-    <tbody>
-      <tr>
-        <td className={styles.label}>Source</td>
-        <td>
-          <div className={`${styles.textbox} ${styles.srcText}`}>
-            <em style={{color:'#555'}}>Please select a source directory</em>
-          </div>
-        </td>
-        <td>
-          <div className={`${styles.button} ${styles.srcButton}`} onclick="openFile('src')">
-            <img src="src/images/folder.svg"/>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td className={styles.label}>Destination</td>
-        <td>
-          <div className={`${styles.textbox} ${styles.destText}`}>
-            <em style={{color:'#555'}}>Please select a destination directory</em>
-          </div>
-        </td>
-        <td>
-          <div className={`${styles.button} ${styles.destButton}`} onclick="openFile('dest')">
-            <img src="src/images/folder.svg"/>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td className={styles.label}>Format</td>
-        <td><input className={styles.patternBox} type="text" name="pattern" placeholder="Please set the file pattern"/></td>
-        <td>
-          <div className={`${styles.button} ${styles.help}`}>
-            <img src="src/images/info.svg" onClick={toggleHelp}/>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td className={styles.label}>Demo</td>
-        <td><div className={styles.patternDemo}></div></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+const Main = ({toggleHelp, srcDir, destDir, pattern, example, onSrcDir, onDestDir, onPatternChange}) => (
+  <div className={styles.Main}>
+    <div className={styles.row}>
+      <div className={styles.label}>Source</div>
+      <input disabled value={srcDir} placeholder="Please select a source directory"/>
+      <div className={styles.button} onClick={onSrcDir}>
+        <img src="src/images/folder.svg"/>
+      </div>
+    </div>
+    <div className={styles.row}>
+      <div className={styles.label}>Destination</div>
+      <input disabled value={destDir} placeholder="Please select a destination directory"/>
+      <div className={styles.button} onClick={onDestDir}>
+        <img src="src/images/folder.svg"/>
+      </div>
+    </div>
+    <div className={styles.row}>
+      <div className={styles.label}>Format</div>
+      <input className={styles.editable} value={pattern} placeholder="Please set the file pattern"/>
+      <div className={styles.button} onClick={toggleHelp}>
+        <img src="src/images/info.svg"/>
+      </div>
+    </div>
+    <div className={styles.row}>
+      <div className={styles.label}>Demo</div>
+      <input disabled className={styles.patternDemo} value={example} placeholder="Please set the file pattern"/>
+    </div>
+    <div className={styles.row}>
+      <button>Start</button>
+    </div>
+  </div>
 );
 
 export default Main;
