@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Main.css'
 
-const Main = ({toggleHelp, srcDir, destDir, pattern, example, onSrcDir, onDestDir, onPatternChange}) => (
+const Main = ({toggleHelp, srcDir, destDir, pattern, example, onSrcDir, onDestDir, onPatternChange, processFiles}) => (
   <div className={styles.Main}>
     <div className={styles.row}>
       <div className={styles.label}>Source</div>
@@ -19,17 +19,17 @@ const Main = ({toggleHelp, srcDir, destDir, pattern, example, onSrcDir, onDestDi
     </div>
     <div className={styles.row}>
       <div className={styles.label}>Format</div>
-      <input className={styles.editable} value={pattern} placeholder="Please set the file pattern"/>
+      <input className={styles.editable} value={pattern} placeholder="Please set the file pattern" onChange={onPatternChange}/>
       <div className={styles.button} onClick={toggleHelp}>
         <img src="src/images/info.svg"/>
       </div>
     </div>
     <div className={styles.row}>
       <div className={styles.label}>Demo</div>
-      <input disabled className={styles.patternDemo} value={example} placeholder="Please set the file pattern"/>
+      <input disabled className={styles.patternDemo} value={example} placeholder="Update the file pattern to see an example here"/>
     </div>
     <div className={styles.row}>
-      <button>Start</button>
+      <button onClick={processFiles}>Start</button>
     </div>
   </div>
 );
