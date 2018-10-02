@@ -44,7 +44,7 @@ export const processFiles = async (srcDir, destDir, pattern) => {
 						console.error(`Error in exif data: '${file}' - ${err.message}`);
 						return;
 					}
-	
+
 					// Exif data returns in an odd format (YYYY:MM:DD HH:mm:SS), so we need to fix it for date parsing
 					const dateString = exifData.exif.CreateDate.replace(':', '-').replace(':', '-').replace(/ /, 'T');
 					const newFile = `${patternDateReplace(pattern, new Date(dateString))}${path.extname(file).toLowerCase()}`;
