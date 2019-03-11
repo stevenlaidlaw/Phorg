@@ -12,12 +12,6 @@ class App extends Component {
   constructor() {
     super();
 
-    this.toggleHelp = this.toggleHelp.bind(this);
-    this.onSrcDir = this.onSrcDir.bind(this);
-    this.onDestDir = this.onDestDir.bind(this);
-    this.onPatternChange = this.onPatternChange.bind(this);
-    this.processFiles = this.processFiles.bind(this);
-
     this.state = {
       displayHelp: false,
       srcDir: '',
@@ -27,13 +21,13 @@ class App extends Component {
     }
   }
 
-  toggleHelp() {
+  toggleHelp = () => {
     this.setState({
       displayHelp: !this.state.displayHelp
     })
   }
 
-  onSrcDir() {
+  onSrcDir = () => {
     remote.dialog.showOpenDialog({properties:['openDirectory']}, (data) => {
       if (data !== undefined) {
         this.setState({
@@ -43,7 +37,7 @@ class App extends Component {
     });
   }
 
-  onDestDir() {
+  onDestDir = () => {
     remote.dialog.showOpenDialog({properties:['openDirectory']}, (data) => {
       if (data !== undefined) {
         this.setState({
@@ -53,8 +47,7 @@ class App extends Component {
     });
   }
 
-  onPatternChange(e) {
-    const pattern = e.target.value;
+  onPatternChange = ({target: {value: pattern}}) => {
     const example = patternDateReplace(pattern, new Date());
 
     this.setState({
@@ -63,7 +56,7 @@ class App extends Component {
     });
   }
 
-  async processFiles() {
+  processFiles = async () => {
     const {srcDir, destDir, pattern} = this.state;
 
     if (srcDir.length < 1) {
@@ -95,7 +88,7 @@ class App extends Component {
         />
         <Help display={displayHelp} toggleDisplay={this.toggleHelp}/>
       </div>
-    )
+    );
   }
 }
 
